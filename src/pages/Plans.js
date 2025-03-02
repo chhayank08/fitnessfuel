@@ -9,7 +9,7 @@ const Container = styled.div`
 `;
 
 const Header = styled.div`
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
 `;
 
 const Tag = styled.p`
@@ -19,16 +19,16 @@ const Tag = styled.p`
 `;
 
 const Title = styled.h1`
-  font-size: 3.5rem;
-  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   font-weight: bold;
 `;
 
 const Description = styled.p`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: #666;
   max-width: 600px;
-  line-height: 1.6;
+  line-height: 1.4;
 `;
 
 const Content = styled.div`

@@ -45,7 +45,7 @@ const LogoSection = styled.div`
   flex-direction: column;
   
   img {
-    height: 80px;
+    height: 250px;
     width: auto;
     margin-bottom: 1rem;
     border-radius: 8px;

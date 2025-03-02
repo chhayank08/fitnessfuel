@@ -23,17 +23,24 @@ const LogoContainer = styled(Link)`
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  margin-left: -2rem;
 `;
 
 const LogoImage = styled.img`
-  height: 50px;
+  height: 200px;
   width: auto;
   border-radius: 8px;
+  margin-left: 0;
+  margin-top: 0;
 `;
 
 const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
+  margin-left: auto;
 `;
 
 const NavLink = styled(Link)`
@@ -42,14 +49,13 @@ const NavLink = styled(Link)`
   font-size: 1.2rem;
   padding: 0.8rem 1.5rem;
   transition: all 0.3s ease;
-  background-color: ${props => props.primary ? 'rgba(0, 0, 0, 0.6)' : 'transparent'};
-  border-radius: 8px;
-  backdrop-filter: ${props => props.primary ? 'blur(5px)' : 'none'};
-  border: ${props => props.primary ? 'none' : '1px solid rgba(255, 255, 255, 0.6)'};
-  
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
   &:hover {
-    color: ${props => props.primary ? 'white' : 'rgba(255, 255, 255, 0.8)'};
-    background-color: ${props => props.primary ? 'rgba(0, 0, 0, 0.8)' : 'rgba(255, 255, 255, 0.1)'};
+    color: rgba(255, 255, 255, 0.95);
+    background-color: transparent;
     transform: translateY(-2px);
   }
 `;
@@ -62,7 +68,7 @@ const Navbar = () => {
       </LogoContainer>
       <NavLinks>
         <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup" primary="true">Sign Up</NavLink>
+        <NavLink to="/signup">Sign Up</NavLink>
       </NavLinks>
     </Nav>
   );

@@ -10,49 +10,47 @@ const Hero = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 2rem;
+  justify-content: flex-start;
+  align-items: flex-start;
+  text-align: left;
+  padding: 4rem 4rem 2rem 2rem;
+  margin-left: auto;
+  max-width: 800px;
   background-color: transparent;
-  backdrop-filter: blur(5px);
   position: relative;
-  
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: -1;
-    border-radius: 0 0 20px 20px;
-  }
 `;
 
 const Title = styled.h1`
-  font-size: 4rem;
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  position: relative;
+  top: 50px;
+  left: 20px;
   color: white;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  text-shadow: 0 8px 24px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.5);
   max-width: 800px;
-  
-  @media (max-width: 768px) {
-    font-size: 2.5rem;
-  }
 `;
 
 const Subtitle = styled.p`
   font-size: 1.5rem;
-  margin-bottom: 3rem;
   max-width: 800px;
+  position: relative;
+  top: 50px;
+  left: 20px;
   color: white;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-  
-  @media (max-width: 768px) {
-    font-size: 1.2rem;
-  }
+  text-shadow: 0 8px 24px rgba(0,0,0,1), 0 0 10px rgba(0,0,0,0.5);
+`;
+
+const ButtonContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
 `;
 
 const Button = styled(Link)`
@@ -86,8 +84,9 @@ const Features = styled.div`
   max-width: 1800px;
   margin: 0 auto 6rem;
   background-color: transparent;
-  backdrop-filter: blur(5px);
   border-radius: 12px;
+  backdrop-filter: none;
+  box-shadow: none;
   
   @media (max-width: 768px) {
     padding: 4rem 2rem;
@@ -101,19 +100,19 @@ const Feature = styled.div`
   align-items: center;
   text-align: center;
   padding: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
   border-radius: 12px;
   transition: transform 0.3s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  
+
   &:hover {
     transform: translateY(-10px);
   }
 `;
 
 const FeatureIcon = styled.img`
-  width: 80px;
-  height: 80px;
+  width: 136.25px;
+  height: 136.25px;
   object-fit: cover;
   border-radius: 50%;
   margin-bottom: 1.5rem;
@@ -134,51 +133,72 @@ const FeatureText = styled.p`
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 `;
 
-const EmpowerSection = styled.div`
-  padding: 8rem 6rem;
-  max-width: 1800px;
-  margin: 0 auto 6rem;
-  background-color: #f7f7f7;
-  backdrop-filter: blur(5px);
-  border-radius: 12px;
+const EmpowerSection = styled.section`
+  padding: 0.2rem;
+  margin: 0.2rem auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 2vh;
+  scroll-snap-align: start;
 
   @media (max-width: 768px) {
-    padding: 4rem 2rem;
+    padding: 0.15rem 0.1rem;
+    margin: 0.15rem auto;
+    flex-direction: column;
   }
 `;
 
 const EmpowerContent = styled.div`
   display: flex;
-  flex-direction: column;
-  background-color: #f7f7f7;
+  flex-direction: row;
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-`;
-
-const EmpowerImageContainer = styled.div`
   width: 100%;
-  height: 400px;
-  overflow: hidden;
-  
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.4rem;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
   @media (max-width: 768px) {
-    height: 300px;
+    flex-direction: column;
+    padding: 0.3rem;
   }
 `;
 
 const EmpowerTextContainer = styled.div`
   padding: 4rem;
-  background-color: #f7f7f7;
-  
+  width: 50%;
+
   @media (max-width: 768px) {
     padding: 2rem;
+    width: 100%;
     text-align: center;
+  }
+`;
+
+const EmpowerImageContainer = styled.div`
+  width: 100%;
+  max-width: 600px;
+  height: 400px;
+  overflow: hidden;
+  padding: 7rem 2rem 2rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 300px;
+    padding: 4rem 1rem 1rem 1rem;
   }
 `;
 
@@ -193,8 +213,8 @@ const EmpowerTitle = styled.h2`
   font-size: 3.5rem;
   margin-bottom: 2rem;
   font-weight: bold;
-  color: white;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  color: black;
+  text-shadow: none;
 
   @media (max-width: 768px) {
     font-size: 2.5rem;
@@ -203,10 +223,10 @@ const EmpowerTitle = styled.h2`
 
 const EmpowerDescription = styled.p`
   font-size: 1.2rem;
-  color: white;
+  color: black;
   line-height: 1.6;
   margin-bottom: 2rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  text-shadow: none;
 
   @media (max-width: 768px) {
     font-size: 1.1rem;
@@ -224,20 +244,28 @@ const ButtonGroup = styled.div`
   }
 `;
 
+const GetStartedContainer = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 20px;
+`;
+
 const Home = () => {
   return (
     <div>
       <Hero>
-        <Title>Transform Your Fitness Journey with Personalization</Title>
+        <Title>Transform Your Fitness Journey </Title>
         <Subtitle>
           At Fitness Fuel, we believe that one size does not fit all. Our app
           tailors diet and exercise plans to your unique needs, helping you
           achieve your fitness goals effectively.
         </Subtitle>
-        <Button to="/signup">Get Started</Button>
-        <Button to="/login" style={{ background: 'transparent', color: 'white', border: '2px solid white' }}>
-          Learn More
-        </Button>
       </Hero>
 
       <Features>
@@ -267,11 +295,12 @@ const Home = () => {
         </Feature>
       </Features>
 
+      <GetStartedContainer>
+        <Button to="/signup">Get Started</Button>
+      </GetStartedContainer>
+
       <EmpowerSection>
         <EmpowerContent>
-          <EmpowerImageContainer>
-            <img src={empowerImage} alt="Empower your fitness journey" />
-          </EmpowerImageContainer>
           <EmpowerTextContainer>
             <Tag>Empower</Tag>
             <EmpowerTitle>Take Control of Your Fitness Journey</EmpowerTitle>
@@ -282,11 +311,14 @@ const Home = () => {
             </EmpowerDescription>
             <ButtonGroup>
               <Button to="/signup">Start Now</Button>
-              <Button to="/login" style={{ background: 'transparent', color: 'white', border: '2px solid white' }}>
+              <Button to="/login" style={{ background: 'transparent', color: 'black', border: '2px solid black' }}>
                 Learn More
               </Button>
             </ButtonGroup>
           </EmpowerTextContainer>
+          <EmpowerImageContainer>
+            <img src={empowerImage} alt="Empower your fitness journey" />
+          </EmpowerImageContainer>
         </EmpowerContent>
       </EmpowerSection>
     </div>
