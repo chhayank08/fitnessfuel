@@ -64,6 +64,32 @@ const Button = styled(Link)`
   margin: 0 1rem 1rem 0;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: 2px solid white;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  }
+  
+  @media (max-width: 768px) {
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+  }
+`;
+
+const OpenDashboardButton = styled.button`
+  padding: 1rem 2rem;
+  background-color: #000;
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 0 1rem 1rem 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  border: none;
+  cursor: pointer;
   
   &:hover {
     transform: translateY(-3px);
@@ -79,18 +105,18 @@ const Button = styled(Link)`
 const Features = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
-  padding: 6rem 4rem;
-  max-width: 1800px;
-  margin: 0 auto 6rem;
+  gap: 2rem;
+  padding: 4rem 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
   background-color: transparent;
   border-radius: 12px;
   backdrop-filter: none;
   box-shadow: none;
   
   @media (max-width: 768px) {
-    padding: 4rem 2rem;
-    gap: 2rem;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
   }
 `;
 
@@ -99,8 +125,9 @@ const Feature = styled.div`
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 2.5rem;
-  background-color: rgba(0, 0, 0, 0.9);
+  padding: 0.05rem 1.5rem 3rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
   border-radius: 12px;
   transition: transform 0.3s ease;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -111,40 +138,38 @@ const Feature = styled.div`
 `;
 
 const FeatureIcon = styled.img`
-  width: 136.25px;
-  height: 136.25px;
-  object-fit: cover;
-  border-radius: 50%;
-  margin-bottom: 1.5rem;
-  border: 3px solid white;
+  width: 350px;
+  height: 350px;
+  object-fit: contain;
+  margin-bottom: 0.5rem;
 `;
 
 const FeatureTitle = styled.h3`
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
   color: white;
   text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 `;
 
 const FeatureText = styled.p`
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: white;
   line-height: 1.6;
   text-shadow: 0 1px 2px rgba(0,0,0,0.3);
 `;
 
 const EmpowerSection = styled.section`
-  padding: 0.2rem;
-  margin: 0.2rem auto;
+  padding: 1rem;
+  margin: 1rem auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 2vh;
+  min-height: 40vh;
   scroll-snap-align: start;
 
   @media (max-width: 768px) {
-    padding: 0.15rem 0.1rem;
-    margin: 0.15rem auto;
+    padding: 0.5rem;
+    margin: 0.5rem auto;
     flex-direction: column;
   }
 `;
@@ -157,22 +182,24 @@ const EmpowerContent = styled.div`
   width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0.4rem;
-  background-color: rgba(255, 255, 255, 0.9);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     flex-direction: column;
-    padding: 0.3rem;
+    padding: 1rem;
   }
 `;
 
 const EmpowerTextContainer = styled.div`
-  padding: 4rem;
+  padding: 2rem;
   width: 50%;
+  color: white;
 
   @media (max-width: 768px) {
-    padding: 2rem;
+    padding: 1rem;
     width: 100%;
     text-align: center;
   }
@@ -187,7 +214,7 @@ const EmpowerImageContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto;
+  margin: auto;
 
   img {
     width: 100%;
@@ -296,27 +323,26 @@ const Home = () => {
       </Features>
 
       <GetStartedContainer>
-        <Button to="/signup">Get Started</Button>
+        <ButtonContainer>
+          <Button to="/signup">Get Started</Button>
+        </ButtonContainer>
       </GetStartedContainer>
 
       <EmpowerSection>
-        <EmpowerContent>
-          <EmpowerTextContainer>
-            <Tag>Empower</Tag>
-            <EmpowerTitle>Take Control of Your Fitness Journey</EmpowerTitle>
-            <EmpowerDescription>
+        <EmpowerContent style={{ width: '80%', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <EmpowerTextContainer style={{ color: 'white' }}>
+            <EmpowerTitle style={{ color: 'white' }}>Take Control of Your Fitness Journey</EmpowerTitle>
+            <EmpowerDescription style={{ color: 'white' }}>
               Our platform provides you with the tools and guidance needed to achieve your fitness goals.
               Whether you're just starting out or looking to take your fitness to the next level,
               we're here to support you every step of the way.
             </EmpowerDescription>
             <ButtonGroup>
-              <Button to="/signup">Start Now</Button>
-              <Button to="/login" style={{ background: 'transparent', color: 'black', border: '2px solid black' }}>
-                Learn More
-              </Button>
+              <Button to="/signup" style={{ border: '2px solid white' }}>Start Now</Button>
+              <Button to="/login" style={{ border: '2px solid white' }}>Learn More</Button>
             </ButtonGroup>
           </EmpowerTextContainer>
-          <EmpowerImageContainer>
+          <EmpowerImageContainer style={{ width: '40%', display: 'flex', alignItems: 'center', marginTop: '-30px' }}>
             <img src={empowerImage} alt="Empower your fitness journey" />
           </EmpowerImageContainer>
         </EmpowerContent>

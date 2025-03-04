@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { auth } from '../firebase';
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useNavigate, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -72,6 +72,28 @@ const Button = styled.button`
   }
 `;
 
+const GoogleButton = styled.button`
+  padding: 1.2rem;
+  background-color: #db4437;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+
+  &:hover {
+    background-color: #c23321;
+    transform: translateY(-2px);
+  }
+`;
+
 const ErrorMessage = styled.p`
   color: #ff6b6b;
   margin-top: 1rem;
@@ -105,7 +127,17 @@ const Login = () => {
     e.preventDefault();
     try {
       await signInWithEmailAndPassword(auth, email, password);
-      navigate('/');
+      navigate('/dashboard');
+    } catch (error) {
+      setError(error.message);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      await signInWithPopup(auth, provider);
+      navigate('/dashboard');
     } catch (error) {
       setError(error.message);
     }
@@ -131,6 +163,9 @@ const Login = () => {
             required
           />
           <Button type="submit">Login</Button>
+          <GoogleButton onClick={handleGoogleSignIn}>
+            Continue with Google
+          </GoogleButton>
           {error && <ErrorMessage>{error}</ErrorMessage>}
         </Form>
         <SignupLink>

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../assets/logo.jpg';
@@ -41,6 +41,45 @@ const NavLinks = styled.div`
   display: flex;
   gap: 2rem;
   margin-left: auto;
+  align-items: center;
+`;
+
+const UserAvatar = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  min-width: 160px;
+  overflow: hidden;
+  z-index: 1000;
+`;
+
+const DropdownItem = styled(Link)`
+  display: block;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #333;
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `;
 
 const NavLink = styled(Link)`
@@ -61,14 +100,37 @@ const NavLink = styled(Link)`
 `;
 
 const Navbar = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    // Add logout logic here
+  };
+
   return (
     <Nav>
       <LogoContainer to="/">
         <LogoImage src={logo} alt="Fitness Fuel Logo" />
       </LogoContainer>
       <NavLinks>
-        <NavLink to="/login">Login</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
+        {isLoggedIn ? (
+          <>
+            <UserAvatar
+              src="https://via.placeholder.com/150"
+              alt="User Avatar"
+            />
+            <NavLink to="/dashboard">Dashboard</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
+            <NavLink to="/" onClick={handleLogout}>
+              Logout
+            </NavLink>
+          </>
+        ) : (
+          <>
+            <NavLink to="/login">Login</NavLink>
+            <NavLink to="/signup">Sign Up</NavLink>
+          </>
+        )}
       </NavLinks>
     </Nav>
   );
