@@ -39,4 +39,6 @@ The application implements best practices for authentication security:
 4. Start the development server with `npm start`
 
 FitnessFuel is designed to be your all-in-one companion for achieving your fitness goals through personalized tracking, actionable insights, and a motivating user experience.
+
+try the hosted version here "https://fitnessfuel-chhayank08s-projects.vercel.app/"
 # fitnessfuel
